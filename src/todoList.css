@@ -1,0 +1,101 @@
+
+.theList li {
+    position: relative;
+    width: 100.5%;
+    padding: 15px;
+    margin-bottom: 15px;
+    list-style: none;
+    border-style: solid none;
+    border-width: thin;
+    border-color: rgba(0, 0, 20, 0.4);
+}
+
+.theList li:hover {
+    border-style: solid none;
+    border-width: medium;
+    border-radius: 5px;
+    border-color: rgba(0,0,20,0.6);
+    cursor: pointer;
+    transition: border-color .5s ease-in;
+}
+
+button.uiButton {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 0px;
+    border-width:2px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+button.uiButton:hover {
+    border-color: rgba(0,0,20, 0.4);
+    transition: border-color .2s ease-out;
+}
+
+button.delete {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translate(0, -50%);
+    padding: 10px;
+    background: none;
+    margin-left: 140px;
+    border-style: solid none;
+    border-radius: 5px;
+    border-width: thin;
+    border-color: rgba(0, 0, 20, 0.4);
+    text-align: center;
+    text-decoration: none;
+    transition: border .2s ease-out;
+    cursor: pointer;
+}
+
+button.delete:hover {
+    border-style: solid;
+    border-color: rgb(0,0,0);
+    transition: border-color .2s ease-out;
+}
+
+input[type=text] {
+  font-weight: bold;
+  background-color: #EEEEEE;
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-family: "Ramabhadra", "Anton", sans-serif;
+  font-size: 48px;
+  color: rgba(0,0,0);
+}
+
+input[type=text]:focus {
+    border-style: solid none;
+    border-radius: 5px;
+    border-color: rgba(0,0,20, 0.4);
+    transition: border-style .2s ease-out;
+}
+
+input[type=text]:hover {
+    border-style: solid none;
+    border-radius: 5px;
+    border-color: rgba(0,0,20, 0.4);
+    transition: border-style .2s ease-out;
+    cursor: text;
+}
+
+.title::placeholder {
+    font-family: "Ramabhadra", "Anton", sans-serif;
+    font-size: 48px;
+    opacity: 1; /* Firefox */
+    color: black;
+}
+
+.crossedOut {
+    text-decoration: line-through;
+    text-decoration-thickness: 10%;
+}
