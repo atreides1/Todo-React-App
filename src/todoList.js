@@ -47,8 +47,29 @@ class List extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
         this.exportHTML = this.exportHTML.bind(this);
+        this.handleLoad = this.handleLoad.bind(this);
     }
 
+    componentDidMount() {
+        window.addEventListener('load', this.handleLoad);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('load', this.handleLoad);
+    }
+
+    handleLoad() {
+        console.log("Refreshed!");
+        //check if data is stored in localstorage
+        if (localStorage.length > 0)
+        {
+        //parse data from string to array
+        let listItems = JSON.parse(localStorage.getItem("listItems"));
+        //setState
+        this.setState({items: listItems});
+        }
+
+    }
 
     addItem(e) {
         if (this._inputElement.value !== "") {
@@ -63,6 +84,7 @@ class List extends Component {
                 };
             });
             this._inputElement.value = "";
+            localStorage.setItem("listItems", JSON.stringify(this.state.items.concat(newItem)));
         }
         console.log(this.state.items);
         e.preventDefault();
@@ -75,11 +97,11 @@ class List extends Component {
         this.setState({
             items: filteredItems
         });
+        localStorage.setItem("listItems", JSON.stringify(filteredItems));
     }
 
     updateTitle(e) {
         if (this._titleElement.value !== "") {
-            //this.state.title = this._titleElement.value;
             this.setState({title: this._titleElement.value});
             let title = document.querySelector(".title");
             title.placeholder = this.state.title;
@@ -97,7 +119,7 @@ class List extends Component {
         let footer = "</body></html>";
         let title = this.state.title;
         let sourceHTML = header+title+document.getElementById("source-html").innerHTML+footer;
-        //get rid of delete × from word doc
+        //gets rid of × from word doc
         sourceHTML = sourceHTML.replace(/×/g, '');
         let source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
         let fileDownload = document.createElement("a");
@@ -147,6 +169,7 @@ class List extends Component {
         );
     }
 }
+
 
 
 export default List;
